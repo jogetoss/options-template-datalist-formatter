@@ -1,0 +1,42 @@
+[{
+    "title": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.config@@",
+    "properties": [
+        {
+            "name": "options",
+            "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.options@@",
+            "type": "grid",
+            "columns": [
+                {
+                    "key": "value",
+                    "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.options.value@@"
+                },
+                {
+                    "key": "label",
+                    "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.options.label@@"
+                }
+            ]
+        },
+        {
+            "name": "optionsBinder",
+            "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.optionsBinder@@",
+            "type": "elementselect",
+            "options_ajax": "[CONTEXT_PATH]/web/property/json/getElements?classname=org.joget.apps.form.model.FormLoadOptionsBinder",
+            "url": "[CONTEXT_PATH]/web/property/json[APP_PATH]/getPropertyOptions"
+        },
+        {
+            "name": "template",
+            "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.template@@",
+            "type":"codeeditor",
+            "mode":"html",
+            "value": "<span style=\"border: 1px solid grey; padding: 5px; margin: 5px;\"><a href=\"view?id={id}\">AA{label}</a></span>",
+            "description": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.template.desc@@"
+        },
+        {
+            "name": "separator",
+            "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.separator@@",
+            "type": "textfield",
+            "value": "",
+            "description": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.separator.desc@@"
+        }
+    ]
+}]
