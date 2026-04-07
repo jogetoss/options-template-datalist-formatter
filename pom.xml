@@ -4,7 +4,7 @@
     <groupId>org.joget.marketplace</groupId>
     <artifactId>options-template-datalist-formatter</artifactId>
     <packaging>bundle</packaging>
-    <version>9.0.0</version>
+    <version>9.0.1</version>
     <name>options-template-datalist-formatter</name>
     <url>http://www.joget.org</url>
     <build>
@@ -97,6 +97,12 @@
             <artifactId>commons-collections</artifactId>
             <version>3.2.2</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <distributionManagement>

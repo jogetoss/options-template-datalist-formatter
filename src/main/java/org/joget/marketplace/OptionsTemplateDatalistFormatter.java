@@ -18,6 +18,8 @@ import org.joget.apps.form.model.FormRow;
 import org.joget.apps.form.model.FormRowSet;
 import org.joget.apps.form.service.FormUtil;
 import org.joget.plugin.base.PluginManager;
+import jakarta.servlet.http.HttpServletRequest;
+import org.joget.workflow.util.WorkflowUtil;
 
 public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefault {
 
@@ -57,8 +59,17 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
 
     @Override
     public String format(DataList dataList, DataListColumn column, Object row, Object value) {
-        if (value == null || value.toString().isEmpty()) {
-            return "";
+        String header = "";
+        
+        HttpServletRequest request = WorkflowUtil.getHttpServletRequest();
+        if (request != null && request.getAttribute(getClassName()) == null) {
+            String customHeader = getPropertyString("customHeader");
+            
+            if (customHeader != null && !customHeader.isEmpty()) {
+                header += customHeader;
+            }
+            
+            request.setAttribute(getClassName(), true);
         }
 
         String template = getPropertyString("template");
@@ -80,10 +91,11 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
             }
             String label = getOptionMap().containsKey(v) ? getOptionMap().get(v) : v;
             String rendered = template.replace("{id}", v).replace("{label}", label);
+            
             results.add(rendered);
         }
 
-        return StringUtils.join(results, separator);
+        return header + StringUtils.join(results, separator);
     }
 
     protected Map<String, String> getOptionMap() {

@@ -28,7 +28,7 @@
             "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.template@@",
             "type":"codeeditor",
             "mode":"html",
-            "value": "<span style=\"border: 1px solid grey; padding: 5px; margin: 5px;\"><a href=\"view?id={id}\">AA{label}</a></span>",
+            "value": "<span class=\"optionsTemplateItem\">\n  <a href=\"view?id={id}\">{label}</a>\n</span>",
             "description": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.template.desc@@"
         },
         {
@@ -37,6 +37,14 @@
             "type": "textfield",
             "value": "",
             "description": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.separator.desc@@"
+        },
+        {
+            "name": "customHeader",
+            "label": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.customHeader@@",
+            "type": "codeeditor",
+            "mode": "html",
+            "value": "<style>\n.optionsTemplateItem{\n\tborder-radius: 5px;\n    border: 1px solid grey;\n    padding: 2px 4px;\n    margin: 2px;\n    display: inline-block;\n    background: white;\n  }\n</style>",
+            "description": "@@org.joget.marketplace.OptionsTemplateDatalistFormatter.customHeader.desc@@"
         }
     ]
 }]
