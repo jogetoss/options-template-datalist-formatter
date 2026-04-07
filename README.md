@@ -1,6 +1,12 @@
 # Description
 
-This repository is meant to serve as a general template for how to set up new repositories in the JogetOSS organization. 
+**Options Template Datalist Formatter** provides templating to individual value for semicolon separated values.
+
+<img width="528" height="246" alt="SCR-20260406-slna" src="https://github.com/user-attachments/assets/9b732365-de51-4dd9-999c-61c83435097e" />
+
+
+<img width="528" height="377" alt="SCR-20260406-smne" src="https://github.com/user-attachments/assets/a03e20db-ba5e-4431-82b7-e0476dc56d7f" />
+
 
 # Getting Help
 
