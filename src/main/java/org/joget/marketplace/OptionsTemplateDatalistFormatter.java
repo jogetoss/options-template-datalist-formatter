@@ -61,15 +61,16 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
     public String format(DataList dataList, DataListColumn column, Object row, Object value) {
         String header = "";
         
+        String uniqueColumnIdentifier = column.getProperty("id") + getClassName();
         HttpServletRequest request = WorkflowUtil.getHttpServletRequest();
-        if (request != null && request.getAttribute(getClassName()) == null) {
+        if (request != null && request.getAttribute(uniqueColumnIdentifier) == null) {
             String customHeader = getPropertyString("customHeader");
             
             if (customHeader != null && !customHeader.isEmpty()) {
                 header += customHeader;
             }
             
-            request.setAttribute(getClassName(), true);
+            request.setAttribute(uniqueColumnIdentifier, true);
         }
 
         String template = getPropertyString("template");
