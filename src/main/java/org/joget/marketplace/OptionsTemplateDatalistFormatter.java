@@ -26,6 +26,7 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
     private static final String MESSAGE_PATH = "messages/OptionsTemplateDatalistFormatter";
 
     Map<String, String> optionMap = null;
+    Map<String, String> groupingMap = null;
 
     @Override
     public String getName() {
@@ -91,7 +92,8 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
                 continue;
             }
             String label = getOptionMap().containsKey(v) ? getOptionMap().get(v) : v;
-            String rendered = template.replace("{id}", v).replace("{label}", label);
+            String grouping = getGroupingMap().containsKey(v) ? getGroupingMap().get(v) : "";
+            String rendered = template.replace("{id}", v).replace("{label}", label).replace("{grouping}", grouping);
             
             results.add(rendered);
         }
@@ -105,6 +107,7 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
         }
 
         optionMap = new ListOrderedMap();
+        groupingMap = new ListOrderedMap();
 
         // load from static "options" grid property
         Object[] options = (Object[]) getProperty(FormUtil.PROPERTY_OPTIONS);
@@ -131,6 +134,7 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
                 FormRowSet rowSet = ((FormLoadBinder) optionBinder).load(null, null, null);
                 if (rowSet != null) {
                     optionMap = new ListOrderedMap();
+                    groupingMap = new ListOrderedMap();
                     for (FormRow formRow : rowSet) {
                         Iterator<String> it = formRow.stringPropertyNames().iterator();
                         String rowValue = formRow.getProperty(FormUtil.PROPERTY_VALUE);
@@ -141,8 +145,15 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
                         if (rowLabel == null && it.hasNext()) {
                             rowLabel = formRow.getProperty(it.next());
                         }
+                        String rowGrouping = formRow.getProperty(FormUtil.PROPERTY_GROUPING);
+                        if (rowGrouping == null && it.hasNext()) {
+                            rowGrouping = formRow.getProperty(it.next());
+                        }
                         if (rowValue != null && rowLabel != null) {
                             optionMap.put(rowValue, rowLabel);
+                        }
+                        if (rowValue != null && rowGrouping != null) {
+                            groupingMap.put(rowValue, rowGrouping);
                         }
                     }
                 }
@@ -150,5 +161,10 @@ public class OptionsTemplateDatalistFormatter extends DataListColumnFormatDefaul
         }
 
         return optionMap;
+    }
+
+    protected Map<String, String> getGroupingMap() {
+        getOptionMap();
+        return groupingMap;
     }
 }
