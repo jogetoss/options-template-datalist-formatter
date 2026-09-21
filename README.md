@@ -7,6 +7,7 @@
 
 <img width="528" height="377" alt="SCR-20260406-smne" src="https://github.com/user-attachments/assets/a03e20db-ba5e-4431-82b7-e0476dc56d7f" />
 
+To setup and configure this plugin, please see the [documentation](https://kb.joget.org/jw/web/userview/jdocs/docs/marketplace/options-template-datalist-formatter).
 
 # Getting Help
 
