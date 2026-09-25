@@ -213,3 +213,10 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+#################
+## Agent config
+#################
+
+# Local symlink to AGENTS.md for tools that look for CLAUDE.md specifically
+/CLAUDE.md
